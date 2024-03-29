@@ -9,7 +9,7 @@ let package = Package(
     .iOS(.v13),
     .tvOS(.v13),
     // macOS does not have common sense `jailbreak`
-    //.macOS(.v10_15)
+    .macOS(.v10_15)
   ],
   products: [
     .library(
