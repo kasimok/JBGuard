@@ -4,7 +4,7 @@
 //
 //  Created by 0x67 on 2024-03-29.
 //
-#if os(iOS)
+#if os(iOS) || os(tvOS)
 import Foundation
 import UIKit
 
