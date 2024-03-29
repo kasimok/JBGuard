@@ -1,0 +1,4 @@
+module CModule {
+  header "denyptrace.h"
+  export *
+}
