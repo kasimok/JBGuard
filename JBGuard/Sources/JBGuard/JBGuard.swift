@@ -1,6 +1,6 @@
 import Foundation
 import Darwin
-
+#if os(iOS)
 /// Simple Jail Break Detection Methods, this methods can be accessed, reverse-engineered and evaded by attackers
 public struct DetectionKind: OptionSet {
   public let rawValue: Int
@@ -71,3 +71,4 @@ public struct JBGuard {
     return jailbreakDetected
   }
 }
+#endif
