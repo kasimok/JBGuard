@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import UIKit
 
 class SchemaChecker: Checker {
   
