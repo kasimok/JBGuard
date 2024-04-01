@@ -79,5 +79,14 @@ class SuspiciousFilesChecker: Checker {
       return false
     }
   }
+  
+  func checkSync() -> Bool {
+    for path in SuspiciousFilesChecker.suspicousAppandSystemPaths {
+      if FileManager.default.fileExists(atPath: path) {
+        return true
+      }
+    }
+    return false
+  }
 }
 #endif

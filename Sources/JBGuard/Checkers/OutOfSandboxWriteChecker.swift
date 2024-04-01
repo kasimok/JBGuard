@@ -8,7 +8,7 @@
 import Foundation
 
 class OutOfSandboxWriteChecker: Checker {
-  func check() async -> Bool {
+  func checkSync() -> Bool {
     do {
       let pathToFileInRestrictedDirectory = "/private/jailbreak.txt"
       try "This is a test.".write(toFile: pathToFileInRestrictedDirectory, atomically: true, encoding: String.Encoding.utf8)
@@ -19,6 +19,10 @@ class OutOfSandboxWriteChecker: Checker {
       // If the write operation failed, then the device is not jailbroken
       return false
     }
+  }
+  
+  func check() async -> Bool {
+    checkSync()
   }
 }
 #endif

@@ -11,6 +11,7 @@ import UIKit
 class SchemaChecker: Checker {
   
   static let schemas = ["cydia://package/com.example.package"]
+  
   func check() async -> Bool {
     await withTaskGroup(of: Bool.self) { group in
       for schema in SchemaChecker.schemas {
@@ -31,6 +32,15 @@ class SchemaChecker: Checker {
       }
       return false
     }
+  }
+  
+  func checkSync() -> Bool {
+    for schema in SchemaChecker.schemas {
+        if let url = URL(string: schema), UIApplication.shared.canOpenURL(url) {
+          return true
+        }
+      }
+    return false
   }
 }
 #endif

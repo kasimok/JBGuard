@@ -17,6 +17,7 @@ public struct DetectionKind: OptionSet {
 
 protocol Checker {
   func check() async -> Bool
+  func checkSync() -> Bool
 }
 
 
@@ -69,6 +70,20 @@ public struct JBGuard {
     }
     
     return jailbreakDetected
+  }
+  
+  /// Detect if device is jailbreaked
+  /// - Parameter kind: detection kind, use at your with
+  /// - Returns: `true` if device is jailbreaked
+  public func detecteJailBreak(of kind: DetectionKind) -> Bool {
+    let checkers = CheckerFactory.createCheckers(for: kind)
+    for checker in checkers {
+      if checker.checkSync() {
+        return true
+      }
+    }
+    
+    return false
   }
 }
 #endif
